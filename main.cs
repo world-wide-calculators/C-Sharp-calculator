@@ -26,6 +26,7 @@ namespace CSharp_Shell
         	Console.Write("Input second number: ");
         	input = Console.ReadLine();
         	Int32.TryParse(input, out n2);
+        	bool printAns = true;
         	
         	if(op == "+")
         	{
@@ -41,10 +42,17 @@ namespace CSharp_Shell
         	}
         	if(op == "/")
         	{
-        		ans = n1 / n2;
+        		if(n2 == 0){
+        			Console.WriteLine("Can't divide by 0");
+        			printAns = false;
+        		}else{
+        			ans = n1 / n2;
+        		}
         	}
         	
-        	Console.WriteLine(n1.ToString() + op + n2.ToString() + "=" + ans.ToString());
+        	if(printAns){
+        		Console.WriteLine(n1.ToString() + op + n2.ToString() + "=" + ans.ToString());
+        	}
         }
     }
 }
